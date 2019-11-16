@@ -1,0 +1,25 @@
+{
+  "name": "2dv515_a2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cccarle/2DV515_A2.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "clustering"
+  ],
+  "author": "Carl Ejnarsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cccarle/2DV515_A2/issues"
+  },
+  "homepage": "https://github.com/cccarle/2DV515_A2#readme",
+  "dependencies": {}
+}
