@@ -10,9 +10,13 @@
   "author": "Carl Ejnarsson",
   "license": "ISC",
   "dependencies": {
+    "n-readlines": "^1.0.0",
     "nodemon": "^1.19.4",
     "restify": "^8.4.0",
     "restify-cors-middleware": "^1.1.1",
     "restify-errors": "^8.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0"
   }
 }

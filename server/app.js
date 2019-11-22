@@ -2,7 +2,9 @@ const restify = require('restify')
 const server = restify.createServer()
 const PORT = 4000
 const corsMiddleware = require('restify-cors-middleware')
+const fileReader = require('../server/model/fileReader')
 
+fileReader.readFile()
 // Middleware
 server.use(restify.plugins.bodyParser())
 
