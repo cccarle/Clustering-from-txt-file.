@@ -10,41 +10,27 @@ exports.readFile = () => {
   row[0].shift() // remove blog from first row
   let allWords = row[0]
 
-  let blogs = []
-
   row.shift()
+
+  let blogs = []
 
   row.forEach(rowLine => {
     let blogName = rowLine.shift() // remove first word from row and save as blogname
-    let values = rowLine
+    let values = rowLine // all values per row
 
-    let wordsWithValues = allWords.map((x, i) => {
-      return { word: x, value: parseInt(values[i]) }
-    })
-
-    let blog = {
-      blog: blogName,
-      words: wordsWithValues
-    }
-    blogs.push(blog)
-  })
-
-  blogs.pop()
-  // console.log(searchForValueForWord(blogs, 'china'))
-}
-
-const searchForValueForWord = (blogs, word) => {
-  let count = 0
-  blogs.forEach(blog => {
-    blog.words.forEach(element => {
-      if (element.word == word) {
-        if (Number(element.value) > Number(0)) {
-          count += element.value
-        }
-        console.log(blog.blog + ' ' + element.value)
-      }
+    const value = values.map(val => parseInt(val)) // make values to numbers from strings
+    // create an object for every row aka a blogs values
+    blogs.push({
+      title: blogName,
+      words: value
     })
   })
 
-  return count
+  let json = {}
+
+  json.wordCount = allWords.length // lengt of all word
+  json.words = allWords // allwords
+  json.blogs = blogs // array with object of blogtitle and wordvalue
+
+  return json
 }

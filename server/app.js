@@ -3,8 +3,9 @@ const server = restify.createServer()
 const PORT = 4000
 const corsMiddleware = require('restify-cors-middleware')
 const fileReader = require('../server/model/fileReader')
+const fs = require('fs')
 
-fileReader.readFile()
+const jsonData = require('./json.json')
 // Middleware
 server.use(restify.plugins.bodyParser())
 
@@ -22,3 +23,14 @@ server.listen(process.env.PORT || 4000, () => {
   console.log('Successfully stared at localhost:' + PORT)
   require('./routes/root')(server)
 })
+
+console.log(jsonData.blogs)
+
+// let json = fileReader.readFile()
+// fs.writeFile('./json.json', JSON.stringify(json), err => {
+//   if (err) {
+//     console.error(err)
+//     return
+//   }
+//   console.log('File has been created')
+// })
