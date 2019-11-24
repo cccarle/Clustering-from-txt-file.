@@ -5,7 +5,7 @@ const corsMiddleware = require('restify-cors-middleware')
 const fileReader = require('../server/model/fileReader')
 const fs = require('fs')
 const jsonData = require('./json.json')
-const stuff = require('./model/stuff')
+
 // Middleware
 server.use(restify.plugins.bodyParser())
 
@@ -22,9 +22,8 @@ server.use(cors.actual)
 server.listen(process.env.PORT || 4000, () => {
   console.log('Successfully stared at localhost:' + PORT)
   require('./routes/root')(server)
+  require('./routes/kmeans')(server)
 })
-
-stuff.algo()
 
 //console.log(jsonData.blogs)
 
