@@ -1,5 +1,5 @@
 const errors = require(`restify-errors`)
-const k_means = require('../model/stuff')
+const k_means = require('../model/kmeans')
 
 module.exports = server => {
   server.get(`/kmeans`, async (req, res, next) => {

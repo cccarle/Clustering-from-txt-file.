@@ -28,19 +28,35 @@ class Centriod {
     this.values.push(randomValueForValieIndex)
   }
 
+  /* 
+    update specfic word by average
+     */
+
   update_word_count(i, avg) {
     this.values.forEach(element => {
       element = avg
     })
   }
 
+  /* 
+    Add a blog to assignments
+     */
+
   assigns(blog) {
     this.assignments.push(blog)
   }
 
+  /* 
+   Returns the lenght of the assignments array
+     */
+
   getAssignmentsLenght() {
     return this.assignments.length
   }
+
+  /* 
+   Checks if assignments and oldAssignments include the same values and is identical. TODO: fix this 
+     */
 
   checkIfPrevIsIdentical() {
     if (this.assignments.length !== this.oldAssignments.length) return false
@@ -54,8 +70,11 @@ class Centriod {
     }
   }
 
+  /* 
+   clears the assignments and take a copy and store it to the "oldAssignments". CHECK: clear old aswell ???
+     */
+
   clearAssignments() {
-    this.oldAssignments = []
     this.oldAssignments = [...this.assignments] // copy of assignments
     this.assignments = [] // clear assignments
   }
