@@ -1,34 +1,59 @@
 const jsonData = require('../json.json')
 
-exports.calcPearson = () => {
+/* 
+  Test classes
+   */
+
+class Centriod {
+  constructor() {
+    this.assignments = []
+    this.oldAssignments = []
+  }
+
+  /* 
+  Retuns a random integear between the lowest and higest number of a  words frequencies
+   */
+  set_word_count(i, blogs) {
+    let valuesForBlog = []
+
+    blogs.forEach(element => {
+      valuesForBlog.push(element.words[0])
+    })
+
+    let min = Math.min(...valuesForBlog)
+    let max = Math.max(...valuesForBlog)
+
+    return Math.floor(Math.random() * (max - min + 1) + min) // random value between min and max
+  }
+
+  clearAssignments() {
+    this.oldAssignments = [...this.assignments] // copy of assignments
+    this.assignments = [] // clear assignments
+  }
+}
+
+exports.algo = () => {
   let numberOfWords = 706
   let k = 5 // clusters
   let centriods = []
 
   for (let i = 0; i < k; i++) {
-    let c // create new centriod
+    let c = new Centriod()
 
     for (let i = 0; i < numberOfWords; i++) {
-      console.log(set_word_count(i, jsonData.blogs))
+      c.set_word_count(i, jsonData.blogs)
+      centriods.push(c)
+    }
+
+    for (c of centriods) {
+      c.clearAssignments()
     }
   }
 }
 
 /* 
-Retuns a random integear between the lowest and higest number of a  words frequencies
-*/
-const set_word_count = (i, blogs) => {
-  let valuesForBlog = []
-
-  blogs.forEach(element => {
-    valuesForBlog.push(element.words[0])
-  })
-
-  let min = Math.min(...valuesForBlog)
-  let max = Math.max(...valuesForBlog)
-
-  return Math.floor(Math.random() * (max - min + 1) + min) // random value between min and max
-}
+  Pearson similarity
+   */
 
 const pearson = (numOfWords, blogA, blogB) => {
   let sumA = 0

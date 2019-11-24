@@ -24,7 +24,7 @@ server.listen(process.env.PORT || 4000, () => {
   require('./routes/root')(server)
 })
 
-stuff.calcPearson()
+stuff.algo()
 
 //console.log(jsonData.blogs)
 
