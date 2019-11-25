@@ -61,7 +61,7 @@ class Centriod {
   checkIfPrevIsIdentical() {
     if (this.assignments.length !== this.oldAssignments.length) return false
     for (var i = this.assignments.length; i--; ) {
-      if (this.assignments[i].title !== this.oldAssignments[i].title)
+      if (this.assignments[i].words[i] !== this.oldAssignments[i].words[i])
         return false
     }
 
@@ -71,10 +71,21 @@ class Centriod {
   }
 
   /* 
+   Returns if the assignments is equal, if equal the iterations is finished.
+     */
+
+  isFinised() {
+    if (this.isPrevIdentical === true) {
+      return true
+    } else false
+  }
+
+  /* 
    clears the assignments and take a copy and store it to the "oldAssignments". CHECK: clear old aswell ???
      */
 
   clearAssignments() {
+    //  this.oldAssignments = [] // cleear copy of assignments
     this.oldAssignments = [...this.assignments] // copy of assignments
     this.assignments = [] // clear assignments
   }

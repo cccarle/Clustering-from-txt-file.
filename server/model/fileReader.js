@@ -20,10 +20,13 @@ exports.readFile = () => {
 
     const value = values.map(val => parseInt(val)) // make values to numbers from strings
     // create an object for every row aka a blogs values
-    blogs.push({
-      title: blogName,
-      words: value
-    })
+
+    if (!blogName == '' || undefined) {
+      blogs.push({
+        title: blogName,
+        words: value
+      })
+    }
   })
 
   let json = {}
