@@ -55,7 +55,7 @@ class Centriod {
   }
 
   /* 
-   Checks if assignments and oldAssignments include the same values and is identical. TODO: fix this 
+   Checks if assignments and oldAssignments include the same values and is identical.
      */
 
   checkIfPrevIsIdentical() {
@@ -85,7 +85,6 @@ class Centriod {
      */
 
   clearAssignments() {
-    //  this.oldAssignments = [] // cleear copy of assignments
     this.oldAssignments = [...this.assignments] // copy of assignments
     this.assignments = [] // clear assignments
   }

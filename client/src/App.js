@@ -18,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <h1>Clustering</h1>
+      <button onClick={() => getKmeans()}>Generate new clusters</button>
       <TreeView kmeansData={kMeansData} />
     </div>
   )

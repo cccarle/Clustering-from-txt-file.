@@ -1,10 +1,13 @@
 {
   "name": "2dv515_a2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Clustering project for 2DV515",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npm run start --prefix server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -21,5 +24,8 @@
     "url": "https://github.com/cccarle/2DV515_A2/issues"
   },
   "homepage": "https://github.com/cccarle/2DV515_A2#readme",
-  "dependencies": {}
+  "dependencies": {
+    "concurrently": "^5.0.0"
+  },
+  "devDependencies": {}
 }

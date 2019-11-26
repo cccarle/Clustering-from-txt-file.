@@ -25,7 +25,7 @@ server.listen(process.env.PORT || 4000, () => {
   require('./routes/kmeans')(server)
 })
 
-//console.log(jsonData.blogs)
+// If you want to write new file use the code below:
 
 // let json = fileReader.readFile()
 // fs.writeFile('./json.json', JSON.stringify(json), err => {

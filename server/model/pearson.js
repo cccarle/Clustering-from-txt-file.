@@ -29,5 +29,5 @@ exports.pearson = (numOfWords, blogA, blogB) => {
   )
 
   // Invert the pearson score
-  return 1 - num / den
+  return 1.0 - num / den
 }
