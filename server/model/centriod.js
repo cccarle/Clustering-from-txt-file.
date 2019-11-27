@@ -34,9 +34,6 @@ class Centriod {
 
   update_word_count(i, avg) {
     this.values[i] = avg
-    // this.values.forEach(element => {
-    //   element = avg
-    // })
   }
 
   /* 
