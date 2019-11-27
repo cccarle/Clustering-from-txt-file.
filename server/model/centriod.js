@@ -33,9 +33,10 @@ class Centriod {
      */
 
   update_word_count(i, avg) {
-    this.values.forEach(element => {
-      element = avg
-    })
+    this.values[i] = avg
+    // this.values.forEach(element => {
+    //   element = avg
+    // })
   }
 
   /* 
@@ -59,29 +60,21 @@ class Centriod {
      */
 
   checkIfPrevIsIdentical() {
-    if (this.assignments.length !== this.oldAssignments.length) return false
-    for (var i = this.assignments.length; i--; ) {
-      if (this.assignments[i].words[i] !== this.oldAssignments[i].words[i])
-        return false
-    }
+    let equal =
+      this.assignments.length == this.oldAssignments.length &&
+      this.assignments.every(
+        (element, index) => element === this.oldAssignments[index]
+      )
 
-    if (true) {
+    if (equal === true) {
       this.isPrevIdentical = true
+    } else {
+      this.isPrevIdentical = false
     }
   }
 
   /* 
-   Returns if the assignments is equal, if equal the iterations is finished.
-     */
-
-  isFinised() {
-    if (this.isPrevIdentical === true) {
-      return true
-    } else false
-  }
-
-  /* 
-   clears the assignments and take a copy and store it to the "oldAssignments". CHECK: clear old aswell ???
+   clears the assignments and take a copy and store it to the "oldAssignments".
      */
 
   clearAssignments() {

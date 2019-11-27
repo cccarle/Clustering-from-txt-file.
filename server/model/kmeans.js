@@ -3,6 +3,7 @@ const algorithm = require('./pearson')
 const jsonData = require('../json.json')
 
 exports.kMeans = () => {
+  console.log('RUNNING KMEANS.')
   let maxIteration = 20
   let numberOfWords = jsonData.wordCount
   let k = 5
@@ -11,27 +12,37 @@ exports.kMeans = () => {
   createCentriods(numberOfWords, k, centriods)
 
   for (let i = 0; i < maxIteration; i++) {
-    while (!centriods.every(centriod => centriod.isFinised())) {
-      clearAssignments(centriods)
+    //  console.log('iteration: ' + i)
 
-      jsonData.blogs.forEach(blog => {
-        let distance = Number.MAX_VALUE
-        let best = undefined
-        for (centriod of centriods) {
-          let cDist = algorithm.pearson(numberOfWords, centriod, blog)
-          if (cDist < distance) {
-            best = centriod
-            distance = cDist
-          }
+    clearAssignments(centriods)
+
+    jsonData.blogs.forEach(blog => {
+      let distance = Number.MAX_VALUE
+      let best = undefined
+      for (centriod of centriods) {
+        let cDist = algorithm.pearson(numberOfWords, centriod, blog)
+        if (cDist < distance) {
+          best = centriod
+          distance = cDist
         }
+      }
 
-        best.assigns(blog)
-      })
+      best.assigns(blog)
+    })
 
-      moveCentriodToCenter(centriods, numberOfWords)
+    // if every centriod is marked as finished "previous value is the same as the new assignments", break.
+    if (centriods.every(checkIfFinised)) {
+      break
     }
+
+    moveCentriodToCenter(centriods, numberOfWords)
   }
+
   return centriods
+}
+
+function checkIfFinised(centroid) {
+  return centroid.isPrevIdentical === true
 }
 
 /* 
@@ -56,6 +67,7 @@ const createCentriods = (numberOfWords, k, centriods) => {
 const moveCentriodToCenter = (centriods, numberOfWords) => {
   centriods.forEach(centroid => {
     // find avergage count for each word
+
     for (let i = 0; i < numberOfWords; i++) {
       let avg = 0
 

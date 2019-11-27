@@ -7,6 +7,7 @@ export const fetchKmeansData = async () => {
     .then(response => {
       if (response.status === 200) {
         let kmeans = response.data.kMeansData
+        console.log(kmeans)
         return kmeans
       }
     })
